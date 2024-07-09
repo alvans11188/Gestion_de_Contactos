@@ -16,10 +16,21 @@ mismo.
 #include <iostream>
 #include <string.h>
 using namespace std;
+struct contactoEmail{
+	string nombrecompleto;
+	string sexo;
+	int edad;
+	int telefono;
+	string email;
+	string nacionalidad;
+	 
+};
+
+
 
 int main () {
 	int respuesta;
-	
+	contactoEmail contacto;
 	do{
 			cout<<"Gestion de contactos"<<endl;
 			cout<<endl<<"Digite una de las siguientes opciones: "<<endl; 
@@ -30,7 +41,34 @@ int main () {
 		   	cout<<"5- Salir del programa. "<< endl; 
 		   	cout<<"\nIngrese una opcion: "<<endl;
   	   		cin>>respuesta;
+			switch (respuesta) {
+				case 1: 
+   			  	 	cout<<"Digite sus nombres completos: "; 
+   			  	 	cin.ignore(); 
+   			  	 	getline(cin,contacto.nombrecompleto);  
+   			  	 	cout<<"Ingrese su sexo: "; 
+   			  	 	getline(cin,contacto.sexo); 
+   			  		cout<<"Ingrese su edad: "; 
+   			  	 	cin>>contacto.edad; 
+   			  	 	cout<<"Ingrese su telefono: "; 
+   			  	 	cin>>contacto.telefono; 
+				 	cout<<"Ingrese su email: "; 
+				 	cin>>contacto.email;  
+				 	cout<<"Ingrese su nacionalidad: "; 
+				 	cin>>contacto.nacionalidad ; 
+				 	cout<<"\n"; 
 
+				 cout<<"\nNombre completos:"<<contacto.nombrecompleto<<endl;  
+				 cout<<"Sexo: "<<contacto.sexo<<endl; 
+				 cout<<"Edad: "<<contacto.edad<<endl; 
+				 cout<<"Telefono: "<<contacto.telefono<<endl; 
+				 cout<<"Email: "<<contacto.email<<endl; 
+				 cout<<"Nacionalidad: "<<contacto.nacionalidad<<endl; 
+
+				 default: 
+				 	break;  
+  	   		
+			}
   	   	
 	} while (respuesta != 5); 
 	
