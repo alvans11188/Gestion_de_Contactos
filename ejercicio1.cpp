@@ -50,7 +50,28 @@ void agregarcontacto(contactoEmail contacto[], int &cantidadcontacto) {
 	cin>>nuevocontacto.nacionalidad ; 
 	cout<<"\n"; 
 	cout << "contacto guardado"<<endl;
+	contacto[cantidadcontacto] = nuevocontacto;
+	cantidadcontacto++;
 }
+void mostrarcontacto(contactoEmail contacto[],int cantidadcontacto){
+	if(cantidadcontacto == 0){
+		cout<<"\nNingun contacto para mostrar. "<<endl;
+	}
+	else{
+	   for(int i=0; i<cantidadcontacto; ++i){
+	   	cout<<"Contacto: "<<i+1<<endl; 
+	   	cout<<"Nombres completos: "<<contacto[i].nombrecompleto<<endl;
+	   	cout<<"Sexo: "<<contacto[i].sexo<<endl; 
+	   	cout<<"Edad: "<<contacto[i].edad<<endl; 
+	   	cout<<"Telefono: "<<contacto[i].telefono<<endl; 
+	   	cout<<"Email: "<<contacto[i].email<<endl; 
+	   	cout<<"Nacionalidad: "<<contacto[i].nacionalidad<<endl; 
+	   	cout<<"\n"; 
+	   }
+	}
+}
+
+
 void eliminarcontacto(contactoEmail contacto[], int &cantidadcontacto, int indice){
 	if(indice>=0 && indice < limitecontacto){
 		for(int i=indice; i< cantidadcontacto -1; i++){
@@ -86,6 +107,10 @@ int main () {
 					cout << "Ingrese indice del contacto a eliminar, Comenzar del 0" << endl;
 					cin >> indice;
 					eliminarcontacto(contacto, cantidadcontacto, indice);
+					break;
+				case 3:
+					mostrarcontacto(contacto, cantidadcontacto);
+					break;
 				default: 
 				 	break;  
   	   		
