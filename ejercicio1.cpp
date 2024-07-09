@@ -83,6 +83,37 @@ void eliminarcontacto(contactoEmail contacto[], int &cantidadcontacto, int indic
 		cout << "\nIndice no valido" << endl;
 	}
 }
+string obtenerDominio(const string& email){
+    int buscarroba=-1;
+    for (int i=0;i<email.length();++i){
+        if(email[i]=='@') {
+            buscarroba=i;
+            break;
+        }
+    }
+    if(buscarroba == -1){
+        return "";
+    }
+    string dominio = "";
+    for(int i = buscarroba + 1; i<email.length();++i){
+        dominio+=email[i];
+    }
+    return dominio;
+}
+
+void ordenServidor(contactoEmail contacto[], int cantidadcontacto) {
+    for (int i = 0; i<cantidadcontacto - 1; ++i) {
+        for (int j = 0; j<cantidadcontacto - 1 - i; ++j) {
+            if (obtenerDominio(contacto[j].email)>obtenerDominio(contacto[j + 1].email)){
+                contactoEmail temp =contacto[j];
+                contacto[j]=contacto[j + 1];
+                contacto[j+1]=temp;
+            }
+        }
+       
+	}
+	
+	}
 
 int main () {
 	int respuesta;
@@ -111,6 +142,13 @@ int main () {
 				case 3:
 					mostrarcontacto(contacto, cantidadcontacto);
 					break;
+				case 4:
+					if(cantidadcontacto == 0){
+					cout<<"\nNingun contacto por mostrar. "<<endl;
+					}
+     	            cout<<"\nMOSTRANDO CONTACTOS SEGUN EL ORDEN POR SERVIDOR: \n"; 
+  		 	        ordenServidor(contacto, cantidadcontacto); 
+                    mostrarcontacto(contacto, cantidadcontacto); 
 				default: 
 				 	break;  
   	   		
